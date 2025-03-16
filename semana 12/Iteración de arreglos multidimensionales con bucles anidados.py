@@ -1,133 +1,55 @@
-# vamos analizar tres temperaturas de ciudades difrentes
-# Definir la matriz de temperaturas
-# Primera dimensión: Ciudades (3 ciudades)
-# Segunda dimensión: Semanas (4 semanas)
-# Tercera dimensión: Días de la semana (7 días)
-temperaturas = [
-    [   # Ciudad 1 quito
-        [   # Semana 1
-            {"dia": "Lunes", "temp": 75},
-            {"dia": "Martes", "temp": 90},
-            {"dia": "Miércoles", "temp": 89},
-            {"dia": "Jueves", "temp": 79},
-            {"dia": "Viernes", "temp": 85},
-            {"dia": "Sábado", "temp": 91},
-            {"dia": "Domingo", "temp": 77}
-        ],
-        [   # Semana 2
-            {"dia": "Lunes", "temp": 88},
-            {"dia": "Martes", "temp": 87},
-            {"dia": "Miércoles", "temp": 83},
-            {"dia": "Jueves", "temp": 91},
-            {"dia": "Viernes", "temp": 77},
-            {"dia": "Sábado", "temp": 89},
-            {"dia": "Domingo", "temp": 92}
-        ],
-        [   # Semana 3
-            {"dia": "Lunes", "temp": 88},
-            {"dia": "Martes", "temp": 85},
-            {"dia": "Miércoles", "temp": 89},
-            {"dia": "Jueves", "temp": 77},
-            {"dia": "Viernes", "temp": 90},
-            {"dia": "Sábado", "temp": 91},
-            {"dia": "Domingo", "temp": 89}
-        ],
-        [   # Semana 4
-            {"dia": "Lunes", "temp": 79},
-            {"dia": "Martes", "temp": 89},
-            {"dia": "Miércoles", "temp": 85},
-            {"dia": "Jueves", "temp": 91},
-            {"dia": "Viernes", "temp": 91},
-            {"dia": "Sábado", "temp": 88},
-            {"dia": "Domingo", "temp": 91}
-        ]
-    ],
-    [   # Ciudad 2 cuenca
-        [   # Semana 1
-            {"dia": "Lunes", "temp": 63},
-            {"dia": "Martes", "temp": 65},
-            {"dia": "Miércoles", "temp": 77},
-            {"dia": "Jueves", "temp": 79},
-            {"dia": "Viernes", "temp": 89},
-            {"dia": "Sábado", "temp": 90},
-            {"dia": "Domingo", "temp": 93}
-        ],
-        [   # Semana 2
-            {"dia": "Lunes", "temp": 89},
-            {"dia": "Martes", "temp": 63},
-            {"dia": "Miércoles", "temp": 76},
-            {"dia": "Jueves", "temp": 72},
-            {"dia": "Viernes", "temp": 77},
-            {"dia": "Sábado", "temp": 90},
-            {"dia": "Domingo", "temp": 92}
-        ],
-        [   # Semana 3
-            {"dia": "Lunes", "temp": 65},
-            {"dia": "Martes", "temp": 88},
-            {"dia": "Miércoles", "temp": 69},
-            {"dia": "Jueves", "temp": 61},
-            {"dia": "Viernes", "temp": 72},
-            {"dia": "Sábado", "temp": 76},
-            {"dia": "Domingo", "temp": 93}
-        ],
-        [   # Semana 4
-            {"dia": "Lunes", "temp": 66},
-            {"dia": "Martes", "temp": 69},
-            {"dia": "Miércoles", "temp": 88},
-            {"dia": "Jueves", "temp": 75},
-            {"dia": "Viernes", "temp": 90},
-            {"dia": "Sábado", "temp": 92},
-            {"dia": "Domingo", "temp": 86}
-        ]
-    ],
-    [   # Ciudad 3  Duran
-        [   # Semana 1
-            {"dia": "Lunes", "temp": 88},
-            {"dia": "Martes", "temp": 87},
-            {"dia": "Miércoles", "temp": 88},
-            {"dia": "Jueves", "temp": 79},
-            {"dia": "Viernes", "temp": 90},
-            {"dia": "Sábado", "temp": 90},
-            {"dia": "Domingo", "temp": 89}
-        ],
-        [   # Semana 2
-            {"dia": "Lunes", "temp": 90},
-            {"dia": "Martes", "temp": 88},
-            {"dia": "Miércoles", "temp": 87},
-            {"dia": "Jueves", "temp": 86},
-            {"dia": "Viernes", "temp": 89},
-            {"dia": "Sábado", "temp": 84},
-            {"dia": "Domingo", "temp": 89}
-        ],
-        [   # Semana 3
-            {"dia": "Lunes", "temp": 91},
-            {"dia": "Martes", "temp": 83},
-            {"dia": "Miércoles", "temp":90 },
-            {"dia": "Jueves", "temp": 88},
-            {"dia": "Viernes", "temp": 89},
-            {"dia": "Sábado", "temp": 85},
-            {"dia": "Domingo", "temp": 82}
-        ],
-        [   # Semana 4
-            {"dia": "Lunes", "temp": 81},
-            {"dia": "Martes", "temp": 78},
-            {"dia": "Miércoles", "temp": 92},
-            {"dia": "Jueves", "temp": 77},
-            {"dia": "Viernes", "temp": 86},
-            {"dia": "Sábado", "temp": 88},
-            {"dia": "Domingo", "temp": 93}
-        ]
-    ]
-]
+def calcular_promedio_ciudad(datos):
+    """
+    Calcula el promedio de temperatura para cada ciudad a partir de datos organizados en 3 dimensiones:
+    ciudades -> semanas -> días.
 
-ciudades = ["Quito", "Cuenca", "Duran"]
+    Parámetros:
+        datos (dict): Estructura anidada donde cada llave es el nombre de una ciudad. Cada ciudad es otro
+                      diccionario en el que las llaves son las semanas (por ejemplo, "Semana1", "Semana2",
+                      "Semana3") y los valores son listas con las temperaturas de cada día de esa semana.
 
-for i, ciudad in enumerate(temperaturas):
-    for j, semana in enumerate(ciudad):
-        suma_temperaturas = 0
-        total_dias = 0
-        for dia in semana:
-            suma_temperaturas += dia["temp"]
-            total_dias += 1
-        promedio = suma_temperaturas / total_dias
-        print(f"Promedio en {ciudades[i]}, Semana {j + 1}: {promedio:.2f}°C")
+    Retorna:
+        dict: Un diccionario con el nombre de la ciudad y su temperatura promedio, calculada con todas las
+              semanas y días.
+    """
+    promedios_ciudades = {}  # Diccionario para almacenar los promedios de cada ciudad
+
+    for ciudad, semanas in datos.items():  # Itera sobre cada ciudad y sus semanas de datos
+        suma_total = 0
+        conteo_total = 0
+
+        for semana, temperaturas in semanas.items():  # Itera sobre las semanas y sus temperaturas diarias
+            suma_total += sum(temperaturas)  # Suma todas las temperaturas de la semana
+            conteo_total += len(temperaturas)  # Cuenta cuántos valores hay en total
+
+        # Cálculo del promedio evitando división por cero
+        promedio = suma_total / conteo_total if conteo_total > 0 else None
+        promedios_ciudades[ciudad] = promedio  # Almacena el promedio en el diccionario
+
+    return promedios_ciudades  # Retorna el diccionario con los promedios de cada ciudad
+
+
+# 🔹 Datos de ejemplo con temperaturas en grados centígrados
+datos_ejemplo = {
+    "Quito": {
+        "Semana1": [14.2, 15.6, 16.1, 14.8, 17.3, 16.9, 15.2],
+        "Semana2": [16.3, 14.9, 15.4, 15.1, 14.7, 16.8, 15.9],
+        "Semana3": [15.4, 16.2, 14.7, 17.1, 15.5, 16.3, 14.9]
+    },
+    "Cuenca": {
+        "Semana1": [11.8, 12.4, 13.0, 11.5, 13.7, 12.9, 12.2],
+        "Semana2": [13.5, 12.3, 11.9, 13.8, 12.7, 11.6, 11.4],
+        "Semana3": [12.8, 11.9, 13.6, 12.4, 12.3, 13.2, 11.8]
+    },
+    "Durán": {
+        "Semana1": [28.5, 29.3, 27.9, 28.8, 30.2, 29.7, 28.6],
+        "Semana2": [29.8, 28.4, 27.7, 30.5, 28.9, 29.2, 27.5],
+        "Semana3": [28.7, 27.6, 29.1, 30.4, 29.3, 28.5, 27.8]
+    }
+}
+
+# 🔹 Llamada a la función y visualización de resultados
+resultados = calcular_promedio_ciudad(datos_ejemplo)
+print("📊 **Temperaturas Promedio en °C:**")
+for ciudad, promedio in resultados.items():
+    print(f"🌍 {ciudad}: {promedio:.2f}°C")
