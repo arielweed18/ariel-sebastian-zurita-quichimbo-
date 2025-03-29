@@ -1,0 +1,3 @@
+Hoy aprendí a trabajar con archivos en Python.
+Es importante cerrar los archivos después de usarlos.
+Los métodos write() y readline() son muy útiles.
